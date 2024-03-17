@@ -192,16 +192,7 @@ require('lazy').setup({
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   -- { import = 'custom.plugins' },
 
-  -- REPL interactive programming
-  -- require 'custom.plugins.repl'
-
-  -- For more efficient navigation
-  'ggandor/leap.nvim'
-
 }, {})
-
--- Set up default mappings for leap navigation
-require("leap").create_default_mappings()
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
