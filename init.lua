@@ -121,11 +121,20 @@ require('lazy').setup({
   {
     -- Theme inspired used by VSCode
     'Mofiqul/vscode.nvim',
+    -- priority = 1000,
+    -- config = function()
+    --   vim.cmd.colorscheme 'vscode'
+    -- end,
+    -- opts = ...
+  },
+
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'vscode'
+      vim.cmd.colorscheme 'catppuccin'
     end,
-    opts = ...
   },
 
   {
@@ -135,7 +144,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'vscode',
+        theme = 'catppuccin',
         component_separators = '|',
         section_separators = '',
       },
@@ -146,7 +155,7 @@ require('lazy').setup({
     -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
     -- Enable `lukas-reineke/indent-blankline.nvim`
-    -- See `:help indent_blankline.txt`
+    -- See `:help indent_blankline.txt`init
     config = function()
       require('ibl').setup {
         char = '┊',
