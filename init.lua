@@ -271,6 +271,19 @@ vim.o.termguicolors = true
 vim.o.spr = true
 vim.o.sb = true
 
+-- Set indent to 4 spaces for TeX files
+
+vim.api.nvim_create_augroup("tex_indent", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+  group = "tex_indent",
+  pattern = "tex",
+  callback = function()
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.tabstop = 4
+    vim.opt_local.softtabstop = 4
+  end,
+})
+
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
