@@ -136,6 +136,18 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- QOL improvements for editing TeX files
+--   Force recognition of .tex files as TeX, instead of plainTeX
+--   Automatically toggle spellchecking
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+  pattern = { '*.tex' },
+  callback = function()
+    vim.bo.filetype = 'tex'
+    vim.opt_local.spell = true
+    vim.opt_local.spelllang = 'en_gb'
+  end,
+})
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
