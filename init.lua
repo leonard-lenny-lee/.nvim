@@ -139,12 +139,16 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- QOL improvements for editing TeX files
 --   Force recognition of .tex files as TeX, instead of plainTeX
 --   Automatically toggle spellchecking
+--   Use 4 space indentation, instead of tabs
 vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
   pattern = { '*.tex' },
   callback = function()
     vim.bo.filetype = 'tex'
     vim.opt_local.spell = true
     vim.opt_local.spelllang = 'en_gb'
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.tabstop = 4
+    vim.opt_local.expandtab = true
   end,
 })
 
