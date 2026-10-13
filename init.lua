@@ -12,6 +12,8 @@ vim.g.have_nerd_font = false
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
+vim.o.exrc = true
+
 -- Make line numbers default
 vim.o.number = true
 -- You can also add relative line numbers, to help with jumping.
@@ -149,6 +151,15 @@ vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
     vim.opt_local.shiftwidth = 4
     vim.opt_local.tabstop = 4
     vim.opt_local.expandtab = true
+  end,
+})
+
+-- Turn on spell checking for markdown files
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+  pattern = { '*.md' },
+  callback = function()
+    vim.opt_local.spell = true
+    vim.opt_local.spelllang = 'en_gb'
   end,
 })
 
@@ -911,6 +922,13 @@ require('lazy').setup({
     --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
     --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+  },
+
+  { -- Plugin for reviewing Git changes
+    'sindrets/diffview.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
   },
 
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
